@@ -1,13 +1,13 @@
 "use strict";
 
 var Task = function(description, category) {		// Ctor
-	// privates
-	var id = ++Task.highestId;
-	var description = description;
-	var category = category;
-	var status = Task.enumStatus.PLANNED;
-	var startDate = new Date();
-	var finishDate = null;	
+	// privates by contract
+	this.id = ++Task.highestId;
+	this.description = description;
+	this.category = category;
+	this.status = Task.enumStatus.PLANNED;
+	this.startDate = new Date();
+	this.finishDate = null;	
 };
 
 // Statics 
@@ -16,19 +16,33 @@ Task.enumStatus = { PLANNED: 0, IN_PROGRESS: 1, DONE: 2};
 
 // Getters and setters
 Task.prototype = {
-	get Id() { return id; },
-	get Description() { return description; },
-	get Category() { return category; },
-	get Status() { return status; },
-	get StartDate() { return startDate; },
-	get FinishDate() { return finishDate; },
-	set Description(desc) { description = desc; },
-	set Category(cat) { category = cat; },
+	get Id() { return this.id; },
+	get Description() { return this.description; },
+	get Category() { return this.category; },
+	get Status() {
+		if(this.status == Task.enumStatus.PLANNED)
+			return "Planned";
+		else if (this.status == Task.enumStatus.IN_PROGRESS)
+			return "In progress";
+		else 
+			return "Done";
+	},
+	
+	get StartDate() { return this.startDate; },
+	get FinishDate() {
+		if(this.status == Task.enumStatus.DONE)
+			return this.finishDate;
+		else
+			return "Not yet finished!";
+	},
+	
+	set Description(desc) { this.description = desc; },
+	set Category(cat) { this.category = cat; },
 	set Status(status) {
 		if( status == Task.enumStatus.DONE) {
-			finishDate = new Date();
+			this.finishDate = new Date();
 		} else {
-			finishDate = null;
+			this.finishDate = null;
 		}
 		
 		this.status = status;
