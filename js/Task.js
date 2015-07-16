@@ -1,6 +1,6 @@
 "use strict";
 
-var Task = function(description, category) {				// Ctor
+var Task = function(description, category) {		// Ctor
 	// privates
 	var id = ++Task.highestId;
 	var description = description;
@@ -14,24 +14,23 @@ var Task = function(description, category) {				// Ctor
 Task.highestId = 0;
 Task.enumStatus = { PLANNED: 0, IN_PROGRESS: 1, DONE: 2};
 
-// Getters. Defining methods in constructor would result in each object having
-// own copy of function instead of shared one. prototype fields can be overriden
-Task.prototype.getId = function() { return id; };
-Task.prototype.getDescription = function() { return description; }; 
-Task.prototype.getCategory = function() { return category; };
-Task.prototype.getStatus = function() { return status; };
-Task.prototype.getStartDate = function() { return startDate; };
-Task.prototype.finishDate = function() { return finishDate; };
-
-// Setters
-Task.prototype.setDescription = function (desc) { description = desc; };
-Task.prototype.setCategory = function(cat) { category = cat; };
-Task.prototype.setStatus = function(status) {
-	if( status == Task.enumStatus.DONE) {
-		finishDate = new Date();
-	} else {
-		finishDate = null;
+// Getters and setters
+Task.prototype = {
+	get Id() { return id; },
+	get Description() { return description; },
+	get Category() { return category; },
+	get Status() { return status; },
+	get StartDate() { return startDate; },
+	get FinishDate() { return finishDate; },
+	set Description(desc) { description = desc; },
+	set Category(cat) { category = cat; },
+	set Status(status) {
+		if( status == Task.enumStatus.DONE) {
+			finishDate = new Date();
+		} else {
+			finishDate = null;
+		}
+		
+		this.status = status;
 	}
-	
-	this.status = status;
-} ;
+};
