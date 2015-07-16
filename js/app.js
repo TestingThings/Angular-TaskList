@@ -2,10 +2,11 @@
 
 (
 	function() {
+		var testTask = new Task("Doing stuff", "Various stuff");
 		
 		var app = angular.module('TaskList', []);
-		app.controler('TaskController', function() {
-			
+		app.controller('TaskController', function() {
+			this.task = testTask;
 		});
 	}
 )();
