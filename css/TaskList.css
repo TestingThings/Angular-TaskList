@@ -1,0 +1,10 @@
+.TaskList {
+	width: 90%;
+	margin: 5%;
+}
+
+.TaskColumn {
+	float: left;
+	width: 30%;
+	margin 3%;
+}

@@ -4,20 +4,51 @@
   	<title> GWT RPC - ANGULAR JS </title>
   	<meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/TaskList.css" />
     <script type="text/javascript" src="js/Task.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body ng-controller="TaskController as tasks">
-  	<div ng-repeat="task in tasks.tasks">
-		<h1>{{ task.Description }}</h1>
-		<h2>{{ task.Category }}</h2>
-		<p>{{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-		<p>
-			{{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}
-		</p>
-		<h2>{{ task.Status }}</h2>
-		<button> Delete task </button>
+  	<div class = "TaskList">
+	  	<div class="TaskColumn">
+	  		<h1> Planned </h1>
+		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Planned'">
+				<h2>{{ task.Description }}</h2>
+				<h3>{{ task.Category }}</h3>
+				<p>{{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+				<p>
+					{{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}
+				</p>
+				<button> Delete task </button>
+			</div>
+		</div>
+		
+	  	<div class="TaskColumn">
+	  		<h1> In progress </h1>
+		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'In progress'">
+				<h2>{{ task.Description }}</h2>
+				<h3>{{ task.Category }}</h3>
+				<p>{{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+				<p>
+					{{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}
+				</p>
+				<button> Delete task </button>
+			</div>
+		</div>
+		
+	  	<div class = "TaskColumn">
+	  		<h1> Done </h1>
+		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Done'">
+				<h2>{{ task.Description }}</h2>
+				<h3>{{ task.Category }}</h3>
+				<p>{{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+				<p>
+					{{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}
+				</p>
+				<button> Delete task </button>
+			</div>
+		</div>
 	</div>
   </body>
 </html>
