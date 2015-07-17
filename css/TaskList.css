@@ -1,10 +1,43 @@
+* {
+	font-family: sans-serif;
+}
+
+body {
+	background-color: #286090;
+}
+
 .TaskList {
+	overflow: hidden; /*Compensate for floating childs*/
 	width: 90%;
-	margin: 5%;
+	max-height: 100%;
+	margin: auto;
 }
 
 .TaskColumn {
 	float: left;
+	height: auto;
 	width: 30%;
-	margin 3%;
+	margin: 1%;
+}
+
+.TaskColumn .panel-heading {
+	background-color: #337AB7;
+	color: white;
+}
+
+.TaskColumn .panel-body {
+	margin: 5%;
+	padding: 2%;
+	background-color: #C4E3F3;
+	border-radius: 0.5em;
+}
+
+.Task {
+	width: 90%;
+	padding: 5%;
+	margin-bottom: 2em;
+}
+
+.TaskList .panel {
+	background-color: #9ACFEA;
 }

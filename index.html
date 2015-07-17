@@ -11,42 +11,24 @@
   </head>
   <body ng-controller="TaskController as tasks">
   	<div class = "TaskList">
-	  	<div class="TaskColumn">
-	  		<h1> Planned </h1>
-		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Planned'">
-				<h2>{{ task.Description }}</h2>
-				<h3>{{ task.Category }}</h3>
-				<p>{{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-				<p>
-					{{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}
-				</p>
-				<button> Delete task </button>
+	  	<div class="panel panel-default TaskColumn">
+	  		<div class="panel-heading"> Planned </div>
+		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Planned'" class = "panel-body Task">
+				<task></task>
 			</div>
 		</div>
 		
-	  	<div class="TaskColumn">
-	  		<h1> In progress </h1>
-		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'In progress'">
-				<h2>{{ task.Description }}</h2>
-				<h3>{{ task.Category }}</h3>
-				<p>{{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-				<p>
-					{{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}
-				</p>
-				<button> Delete task </button>
+	  	<div class="panel panel-default TaskColumn">
+	  		<div class="panel-heading"> In progress </div>
+		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'In progress'" class = "panel-body Task">
+				<task></task>
 			</div>
 		</div>
 		
-	  	<div class = "TaskColumn">
-	  		<h1> Done </h1>
-		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Done'">
-				<h2>{{ task.Description }}</h2>
-				<h3>{{ task.Category }}</h3>
-				<p>{{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-				<p>
-					{{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}
-				</p>
-				<button> Delete task </button>
+	  	<div class = "panel panel-default TaskColumn">
+	  		<div class="panel-heading"> Done </div>
+		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Done'" class = "panel-body Task">
+				<task></task>
 			</div>
 		</div>
 	</div>
