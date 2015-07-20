@@ -14,9 +14,9 @@
 		testTasks[3].Status = Task.enumStatus.IN_PROGRESS;
 		testTasks[4].Status = Task.enumStatus.DONE;
 
-		var app = angular.module('TaskList', []);
-		app.controller('TaskController', function() {
-			this.tasks = testTasks;
+		var app = angular.module('TaskList', ['ngAnimate']);
+		app.controller('TaskController', function($scope) {
+			$scope.tasks = testTasks;
 		});
 		
 		app.directive('tasks', function() {

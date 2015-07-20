@@ -13,6 +13,10 @@ body {
 	margin: auto;
 }
 
+.TaskList .panel {
+	background-color: #9ACFEA;
+}
+
 .TaskColumn {
 	float: left;
 	height: auto;
@@ -32,12 +36,31 @@ body {
 	border-radius: 0.5em;
 }
 
+/*	TASK DELETE ANIMATION	*/
+.Task.ng-enter,
+.Task.ng-leave {
+  transition:0.3s linear all;
+}
+
+.Task.ng-enter,
+.Task.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+/*	TASK FIELD	*/
 .Task {
 	width: 90%;
 	padding: 5%;
 	margin-bottom: 2em;
 }
 
-.TaskList .panel {
-	background-color: #9ACFEA;
+/*	DELETE/STATUS BUTTONS*/
+.Buttons {
+	margin: auto;
+	width: 50%;
 }
+
+.Button {
+	margin: 3em;
+}
+
