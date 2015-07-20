@@ -1,5 +1,10 @@
-<h2>{{ task.Description }}</h2>
-<h3>{{ task.Category }}</h3>
-<p>Added: {{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-<p ng-show="task.Status == 'Done'">Finished: {{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-<button> Delete task </button>
+<div class="panel panel-default TaskColumn">
+	<div class="panel-heading">{{status}}</div>
+  	<div ng-repeat="task in tasks" ng-if="task.Status == status" class = "panel-body Task">
+		<h2>{{ task.Description }}</h2>
+		<h3>{{ task.Category }}</h3>
+		<p>Added: {{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+		<p ng-show="task.Status == 'Done'">Finished: {{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+		<button> Delete task </button>
+	</div>
+</div>

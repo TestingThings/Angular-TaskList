@@ -19,9 +19,14 @@
 			this.tasks = testTasks;
 		});
 		
-		app.directive('task', function() {
+		app.directive('tasks', function() {
 			return {
 				restrict: 'E',
+				scope: {
+					status: '@',
+					tasks: '=tasks'
+				},
+				require: '^TaskController',
 				templateUrl: 'directives/taskView.html'
 			};
 		});

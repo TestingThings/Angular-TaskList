@@ -9,28 +9,11 @@
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </head>
-  <body ng-controller="TaskController as tasks">
-  	<div class = "TaskList">
-	  	<div class="panel panel-default TaskColumn">
-	  		<div class="panel-heading"> Planned </div>
-		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Planned'" class = "panel-body Task">
-				<task></task>
-			</div>
-		</div>
-		
-	  	<div class="panel panel-default TaskColumn">
-	  		<div class="panel-heading"> In progress </div>
-		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'In progress'" class = "panel-body Task">
-				<task></task>
-			</div>
-		</div>
-		
-	  	<div class = "panel panel-default TaskColumn">
-	  		<div class="panel-heading"> Done </div>
-		  	<div ng-repeat="task in tasks.tasks" ng-if="task.Status == 'Done'" class = "panel-body Task">
-				<task></task>
-			</div>
-		</div>
-	</div>
+  <body ng-controller="TaskController as tasks" class = "TaskList">
+	<tasks status="Planned" tasks="tasks.tasks"></tasks>
+	
+  	<tasks status="In progress" tasks="tasks.tasks">></tasks>
+	
+  	<tasks status="Done" tasks="tasks.tasks">></tasks>
   </body>
 </html>
