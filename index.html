@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/TaskList.css" />
     <script type="text/javascript" src="js/Task.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
     <script type="text/javascript" src="js/angular-animate.min.js"></script>    
     <script type="text/javascript" src="js/app.js"></script>
   </head>
@@ -16,6 +16,6 @@
   	<tasks status="Done" tasks="tasks"></tasks>
   	
   	<button class='addTaskButton' ng-click="enterAddMode()">Add Task</button>
-  	<addtask ng-show="addMode"></addtask>
+  	<addtask ng-show="addMode" tasks="tasks"></addtask>
   </body>
 </html>

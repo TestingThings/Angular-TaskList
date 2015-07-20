@@ -7,7 +7,6 @@ body {
 }
 
 .TaskList {
-	overflow: hidden; /*Compensate for floating childs*/
 	width: 90%;
 	margin: auto;
 }
@@ -71,5 +70,21 @@ body {
 	background-color: #C4E3F3;
 	border: none;
 	font-size: 2em;
+}
+
+/*ADD TASK STYLES*/
+.AddTask {
+	padding: 2em;
+	position: fixed;
+	top: 0; left: 0; bottom: 0; right:0;
+	margin: auto;
+	height: 35%;
+	width: 25%;
+	overflow: auto;
+	background-color: #9ACFEA;
+}
+
+.TaskInput {
+
 }
 

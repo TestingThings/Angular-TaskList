@@ -1,16 +1,20 @@
  <!-- Task input --> 
- <div class= 'Preview'>
-	Name: <br>
-	<input ng-model='name'/>
-	Category: <br>
-	<input ng-model='category'/>
-	Status: <br>
-	<select ng-model='status'>
-	 	<option>Planned</option>
-	 	<option>In progress</option>
-	 	<option>Done</option>
-	</select>
+ <div class = 'AddTask'>
+	 <div class = 'TaskInput'>
+		Description: <br/>
+		<input ng-model='task.Description'/> <br/>
+		Category: <br/>
+		<input ng-model='task.Category'/> <br/>
+		Status: <br/>
+		<select ng-model='task.Status'>
+		 	<option>Planned</option>
+		 	<option>In progress</option>
+		 	<option>Done</option>
+		</select>
+	</div>
+
+	<div>
+		<button ng-disabled="isDisabled()" ng-click="confirmAdd()"> Save </button>
+		<button ng-click="leaveAddMode()"> Cancel </button>
+	</div>
 </div>
- 
-<button> Save </button>
-<button> Cancel </button>

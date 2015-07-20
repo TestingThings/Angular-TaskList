@@ -1,46 +1,58 @@
 "use strict";
 
+var testTasks = [
+	new Task("Doing stuff", "Various stuff"),
+	new Task("Doing other stuff", "Various stuff"),
+	new Task("Oh whatever", "Other stuff"),
+	new Task("Blah blah", "Other stuff"),
+	new Task("Job done!", "Other stuff")
+];
+
+testTasks[2].Status = Task.enumStatus.PLANNED;
+testTasks[3].Status = Task.enumStatus.IN_PROGRESS;
+testTasks[4].Status = Task.enumStatus.DONE;
+
 (
 	function() {
-		var testTasks = [
-			new Task("Doing stuff", "Various stuff"),
-			new Task("Doing other stuff", "Various stuff"),
-			new Task("Oh whatever", "Other stuff"),
-			new Task("Blah blah", "Other stuff"),
-			new Task("Job done!", "Other stuff")
-		];
-		
-		testTasks[2].Status = Task.enumStatus.PLANNED;
-		testTasks[3].Status = Task.enumStatus.IN_PROGRESS;
-		testTasks[4].Status = Task.enumStatus.DONE;
 
 		var app = angular.module('TaskList', ['ngAnimate']);
 		
 		app.controller('TaskController', function($scope) {
 			$scope.tasks = testTasks;
-			$scope.addMode = false;
-			
-			$scope.enterAddMode = function() {
-				$scope.addMode = true;
-			};
-			
-			$scope.leaveAddMode = function() {
-				
-			};
-			
-			$scope.confirmAdd = function() {
-				
-			};
 		});
-		
-		app.controller('AddTaskController', function($scope) {
-			$scope.task = new Task();
-		});
+
 		
 		app.directive('addtask', function() {
+
+			var controller = ['$scope', function ($scope) {
+				$scope.task = {};
+
+				$scope.isDisabled = function() {
+					return $scope.task.Description == '' || $scope.task.Category == '';
+				};
+
+				$scope.addMode = false;
+				
+				$scope.enterAddMode = function() {
+					$scope.addMode = true;
+					$scope.task = new Task();
+				};
+				
+				$scope.leaveAddMode = function() {
+					$scope.addMode = false;
+				};
+				
+				$scope.confirmAdd = function() {
+					$scope.addMode = false;
+					$scope.tasks.push($scope.task);
+				};
+			}]
+
 			return {
 				restrict: 'E',
-				templateUrl: 'directives/addTaskView.html'
+				templateUrl: 'directives/addTaskView.html',
+				require: '^TaskController',
+				controller: controller
 			};
 		});
 		

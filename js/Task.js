@@ -3,8 +3,8 @@
 var Task = function(description, category) {		// Ctor
 	// privates by contract
 	this.id = ++Task.highestId;
-	this.description = description;
-	this.category = category;
+	this.description = description || '';
+	this.category = category || '';
 	this.status = Task.enumStatus.PLANNED;
 	this.startDate = new Date();
 	this.finishDate = null;	
