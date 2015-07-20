@@ -12,9 +12,10 @@
   </head>
   <body ng-controller="TaskController" class = "TaskList">
 	<tasks status="Planned" tasks="tasks"></tasks>
-	
   	<tasks status="In progress" tasks="tasks"></tasks>
-	
   	<tasks status="Done" tasks="tasks"></tasks>
+  	
+  	<button class='addTaskButton' ng-click="enterAddMode()">Add Task</button>
+  	<addtask ng-show="addMode"></addtask>
   </body>
 </html>

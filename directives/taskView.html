@@ -7,7 +7,7 @@
 		<p ng-show="task.Status == 'Done'">Finished: {{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
 		<div class="Buttons">
 			
-			<button ng-hide="task.Status == 'Planned'">
+			<button ng-hide="task.Status == 'Planned'" ng-click="task.prevStatus()">
 				&larr;
 			</button>
 			
@@ -15,7 +15,7 @@
 				Delete task 
 			</button>
 			
-			<button ng-hide="task.Status == 'Done'">
+			<button ng-hide="task.Status == 'Done'" ng-click="task.nextStatus(); alert('OMG')">
 				&rarr;
 			</button>
 			

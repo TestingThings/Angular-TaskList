@@ -46,5 +46,19 @@ Task.prototype = {
 		}
 		
 		this.status = status;
+	},
+	
+	nextStatus: function() {
+		if(this.status == Task.enumStatus.PLANNED)
+			this.Status = Task.enumStatus.IN_PROGRESS;
+		else if (this.status == Task.enumStatus.IN_PROGRESS)
+			this.Status = Task.enumStatus.DONE;
+	},
+	
+	prevStatus: function() {
+		if(this.status == Task.enumStatus.IN_PROGRESS)
+			this.Status = Task.enumStatus.PLANNED;
+		else if (this.status == Task.enumStatus.DONE)
+			this.Status = Task.enumStatus.IN_PROGRESS;
 	}
 };

@@ -15,8 +15,33 @@
 		testTasks[4].Status = Task.enumStatus.DONE;
 
 		var app = angular.module('TaskList', ['ngAnimate']);
+		
 		app.controller('TaskController', function($scope) {
 			$scope.tasks = testTasks;
+			$scope.addMode = false;
+			
+			$scope.enterAddMode = function() {
+				$scope.addMode = true;
+			};
+			
+			$scope.leaveAddMode = function() {
+				
+			};
+			
+			$scope.confirmAdd = function() {
+				
+			};
+		});
+		
+		app.controller('AddTaskController', function($scope) {
+			$scope.task = new Task();
+		});
+		
+		app.directive('addtask', function() {
+			return {
+				restrict: 'E',
+				templateUrl: 'directives/addTaskView.html'
+			};
 		});
 		
 		app.directive('tasks', function() {
