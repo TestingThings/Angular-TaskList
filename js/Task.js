@@ -39,6 +39,14 @@ Task.prototype = {
 	set Description(desc) { this.description = desc; },
 	set Category(cat) { this.category = cat; },
 	set Status(status) {
+		/*Cast from string if needed*/
+		if(status == 'Planned')
+			status = Task.enumStatus.PLANNED;
+		else if(status == 'In progress')
+			status = Task.enumStatus.IN_PROGRESS;
+		else if(status == 'Done')
+			status = Task.enumStatus.DONE;
+			
 		if( status == Task.enumStatus.DONE) {
 			this.finishDate = new Date();
 		} else {
