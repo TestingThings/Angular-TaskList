@@ -54,12 +54,16 @@ body {
 
 /*	DELETE/STATUS BUTTONS*/
 .Buttons {
-	margin: auto;
-	width: 50%;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+    margin: auto;   
 }
 
 .Button {
-	
+	background-color: #337AB7;
+	border: none;
+	color: white;
 }
 
 .addTaskButton {
@@ -78,8 +82,8 @@ body {
 	position: fixed;
 	top: 0; left: 0; bottom: 0; right:0;
 	margin: auto;
-	height: 35%;
-	width: 25%;
+	height: 15em;
+	width: 20em;
 	overflow: auto;
 	background-color: #9ACFEA;
 }
@@ -88,3 +92,7 @@ body {
 
 }
 
+.CategoryFilter {
+	clear: both;
+	margin: 1em;
+}

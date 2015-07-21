@@ -1,21 +1,21 @@
 <div class="panel panel-default TaskColumn">
-	<div class="panel-heading">{{status}}</div>
-  	<div ng-repeat="task in tasks" ng-if="task.Status == status" class = "panel-body Task">
-		<h2>{{ task.Description }}</h2>
-		<h3>{{ task.Category }}</h3>
-		<p>Added: {{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-		<p ng-show="task.Status == 'Done'">Finished: {{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+	<div class="panel-heading">{{status}} - {{filter}}</div>
+  	<div ng-repeat="task in tasks" ng-if="task.Status == status && (task.Category == filter || filter == 'All')" class = "panel-body Task">
+		<h4>{{ task.Description }}</h4>
+		<h5>{{ task.Category }}</h5>
+		<h6>Added: {{ task.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</h6>
+		<h6 ng-show="task.Status == 'Done'">Finished: {{ task.FinishDate | date:'yyyy-MM-dd HH:mm:ss'}}</h6>
 		<div class="Buttons">
 			
-			<button ng-hide="task.Status == 'Planned'" ng-click="task.prevStatus()">
+			<button ng-hide="task.Status == 'Planned'" ng-click="task.prevStatus()" class="Button">
 				&larr;
 			</button>
 			
-			<button ng-click="tasks.splice($index, 1);"> 
+			<button ng-click="tasks.splice($index, 1);" class="Button"> 
 				Delete task 
 			</button>
 			
-			<button ng-hide="task.Status == 'Done'" ng-click="task.nextStatus(); alert('OMG')">
+			<button ng-hide="task.Status == 'Done'" ng-click="task.nextStatus();" class="Button">
 				&rarr;
 			</button>
 			

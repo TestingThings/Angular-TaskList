@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="TaskList">
   <head>
-  	<title> GWT RPC - ANGULAR JS </title>
+  	<title> AngularJS test </title>
   	<meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/TaskList.css" />
@@ -11,11 +11,23 @@
     <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body ng-controller="TaskController" class = "TaskList">
-	<tasks status="Planned" tasks="tasks"></tasks>
-  	<tasks status="In progress" tasks="tasks"></tasks>
-  	<tasks status="Done" tasks="tasks"></tasks>
   	
+  	<!-- Lists -->
+	<tasks status="Planned" tasks="tasks" filter="filter"></tasks>
+  	<tasks status="In progress" tasks="tasks" filter="filter"></tasks>
+  	<tasks status="Done" tasks="tasks" filter="filter"></tasks>
+  	
+  	<!-- Category filter -->
+  	<div class="CategoryFilter">
+	  	<select ng-model="filter" class="CategoryFilter">
+	  		<option value="All">-- Category --</option>
+	  		<option ng-repeat="task in tasks | unique: 'Category'" value="{{task.Category}}" >{{task.Category}}</option>
+	  	</select>
+  	</div>
+  	
+  	<!-- New task popup -->
   	<button class='addTaskButton' ng-click="enterAddMode()">Add Task</button>
   	<addtask ng-show="addMode" tasks="tasks"></addtask>
+  	
   </body>
 </html>

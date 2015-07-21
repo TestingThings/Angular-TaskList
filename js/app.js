@@ -19,6 +19,7 @@ testTasks[4].Status = Task.enumStatus.DONE;
 		
 		app.controller('TaskController', function($scope) {
 			$scope.tasks = testTasks;
+			$scope.filter = 'All';
 		});
 
 		
@@ -46,7 +47,7 @@ testTasks[4].Status = Task.enumStatus.DONE;
 					$scope.addMode = false;
 					$scope.tasks.push($scope.task);
 				};
-			}]
+			}];
 
 			return {
 				restrict: 'E',
@@ -61,11 +62,29 @@ testTasks[4].Status = Task.enumStatus.DONE;
 				restrict: 'E',
 				scope: {
 					status: '@',
-					tasks: '=tasks'
+					tasks: '=tasks',
+					filter: '=filter'
 				},
 				require: '^TaskController',
 				templateUrl: 'directives/taskView.html'
 			};
+		});
+		
+		app.filter('unique', function() {
+		   return function(collection, keyname) {
+		      var output = [], 
+		          keys = [];
+		
+		      angular.forEach(collection, function(item) {
+		          var key = item[keyname];
+		          if(keys.indexOf(key) === -1) {
+		              keys.push(key);
+		              output.push(item);
+		          }
+		      });
+		
+		      return output;
+   			};
 		});
 	}
 )();
